@@ -2,6 +2,13 @@
 
 This project is part of [Udacity](https://www.udacity.com "Udacity - Be in demand")'s [VR Developer Nanodegree](https://www.udacity.com/course/vr-developer-nanodegree--nd017).
 
+# About
+Built by Alix Cave 
+System: HTC Vive Pro 
+Time: This project took about 48 hours of developement. 
+Pro: I appreciate the guidance the rubric provided since there were quite a number of areas for performance diagnosis and improvement.
+Con: None that I can think of.
+
 # Project Overview
 This project is a chance for you to practice your newly learned optimization skills. You’ll be given a VR game that is extremely unperformant, and use your talents to optimize it to a consistent 90fps.
 
