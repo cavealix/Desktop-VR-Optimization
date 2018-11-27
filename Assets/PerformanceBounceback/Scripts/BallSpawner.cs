@@ -56,6 +56,9 @@ public class BallSpawner : MonoBehaviour {
             pooledBalls.Add(obj);
             ballsAmount++;
             ballPoolNum = ballsAmount - 1;
+
+            //reuse previously created balls to prevent memory/performance leak
+
         }*/
             //Debug.Log(ballPoolNum);
             return pooledBalls[ballPoolNum];
@@ -64,14 +67,10 @@ public class BallSpawner : MonoBehaviour {
     void SpawnBall()
     {
         GameObject selectedBall = BallSpawner.current.GetPooledBall();
-        //selectedBall.transform.position = transform.position;
-        //selectedRigidbody.velocity = Vector3.zero;
-        //selectedRigidbody.angularVelocity = Vector3.zero;
+        selectedBall.transform.position = transform.position;
+        Rigidbody selectedRigidbody = selectedBall.GetComponent<Rigidbody>();
+        selectedRigidbody.velocity = Vector3.zero;
+        selectedRigidbody.angularVelocity = Vector3.zero;
         selectedBall.SetActive(true);
-    }
-
-    void ResetBall()
-    {
-
     }
 }
