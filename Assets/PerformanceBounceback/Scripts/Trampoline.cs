@@ -14,8 +14,6 @@ public class Trampoline : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        scoreScript = GameObject.Find("GameManager").GetComponent<GameManager>();
-        pSystem = GetComponentInChildren<ParticleSystem>();
 
 	}
 
@@ -23,6 +21,10 @@ public class Trampoline : MonoBehaviour {
     {
         if (col.gameObject.CompareTag("Throwable"))
         {
+            //get current score
+            scoreScript = GameObject.Find("GameManager").GetComponent<GameManager>();
+            pSystem = GetComponentInChildren<ParticleSystem>();
+
             //Score Point
             scoreScript.score++;
             //Particle effect
