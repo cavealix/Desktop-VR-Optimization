@@ -31,43 +31,47 @@ public class BallSpawner : MonoBehaviour {
         }
     }
 
-public GameObject GetPooledBall()
-{
-    ballPoolNum++;
-    if (ballPoolNum > (ballsAmount - 1))
-    {
-        ballPoolNum = 0;
-    }
-    //if we’ve run out of objects in the pool too quickly, create a new one
-    if (pooledBalls[ballPoolNum].activeInHierarchy)
-    {
-        //create a new bullet and add it to the bulletList
-        GameObject obj = Instantiate(pooledBall);
-        pooledBalls.Add(obj);
-        ballsAmount++;
-        ballPoolNum = ballsAmount - 1;
-    }
-        Debug.Log(ballPoolNum);
-        return pooledBalls[ballPoolNum];
-}
-   	
-	// Update is called once per frame
-	void Update () {
+    // Update is called once per frame
+    void Update () {
         cooldown -= Time.deltaTime;
         if(cooldown <= 0)
         {
             cooldown = cooldownLength;
             SpawnBall();
-        }		
-	}
+        }       
+    }
+
+    public GameObject GetPooledBall()
+    {
+        ballPoolNum++;
+        if (ballPoolNum > (ballsAmount - 1))
+        {
+            ballPoolNum = 0;
+        }
+        //if we’ve run out of objects in the pool too quickly, create a new one
+        /*if (pooledBalls[ballPoolNum].activeInHierarchy)
+        {
+            //create a new bullet and add it to the bulletList
+            GameObject obj = Instantiate(pooledBall);
+            pooledBalls.Add(obj);
+            ballsAmount++;
+            ballPoolNum = ballsAmount - 1;
+        }*/
+            //Debug.Log(ballPoolNum);
+            return pooledBalls[ballPoolNum];
+    }
 
     void SpawnBall()
     {
         GameObject selectedBall = BallSpawner.current.GetPooledBall();
-        selectedBall.transform.position = transform.position;
-        Rigidbody selectedRigidbody = selectedBall.GetComponent<Rigidbody>();
-        selectedRigidbody.velocity = Vector3.zero;
-        selectedRigidbody.angularVelocity = Vector3.zero;
+        //selectedBall.transform.position = transform.position;
+        //selectedRigidbody.velocity = Vector3.zero;
+        //selectedRigidbody.angularVelocity = Vector3.zero;
         selectedBall.SetActive(true);
+    }
+
+    void ResetBall()
+    {
+
     }
 }
